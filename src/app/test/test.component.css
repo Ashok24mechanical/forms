@@ -1,0 +1,39 @@
+.fi{
+   display: flex;
+   margin-top: 20px;
+}
+.fi input{
+   
+    position: relative;
+   color: white;
+   width: 20vw;
+   align-items: center;
+   justify-content: center;
+background: #000;
+
+}
+.fi span{
+    position: absolute;
+    color: white;
+    pointer-events: none;
+    left: 0;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: 0.4s;
+    text-transform: capitalize;
+}
+.fi input:valid ~span,
+.fi input:focus ~span
+{
+    transform: translateX(10px) translateY(-10px);
+    color: black;
+    padding: 0 10px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    box-shadow: orange;
+    transition: 0.4s;
+    background: white;
+}

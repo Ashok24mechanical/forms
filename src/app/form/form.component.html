@@ -1,0 +1,39 @@
+<div>
+    <form action="" [formGroup]="reactiveform" (ngSubmit)="data()">
+        <div class="col-6 mx-auto mt-3">
+            <input type="text" name="firstname" class="form-control" id="" formControlName="firstname"
+                placeholder="firstname">
+            <div *ngIf="reactiveform.get('firstname').invalid && reactiveform.get('firstname').touched">
+                <span *ngIf="reactiveform.get('firstname').hasError('required')">firstname required</span>
+                <span *ngIf="reactiveform.controls['firstname'].hasError('minlength')">Enter minLength 2 letter</span>
+                <span *ngIf="reactiveform.controls['firstname'].hasError('maxlength')">Enter maxLength 6 letter</span>
+            </div>
+        </div>
+        <div class="col-6 mx-auto mt-3">
+            <input type="text" name="password" class="form-control" id="" formControlName="password"
+                placeholder="password">
+            <div *ngIf="reactiveform.get('password').invalid && reactiveform.get('password').touched">
+                <span *ngIf="reactiveform.get('password').hasError('required')">Password required</span>
+                <span *ngIf="reactiveform.controls['password'].hasError('minlength')">Enter 8 digit password</span>
+                <span *ngIf="reactiveform.controls['password'].hasError('maxlength')">Enter 16 Digit Password</span>
+            </div>
+        </div>
+        <div class="col-6 mx-auto mt-3">
+            <input type="text" name="confirmpassword" class="form-control" id="" formControlName="confirmpassword"
+                placeholder="confirmpassword">
+            <div *ngIf="reactiveform.get('confirmpassword').invalid && reactiveform.get('confirmpassword').touched">
+                <span *ngIf="reactiveform.get('confirmpassword').hasError('required')">firstname required</span>
+                <span *ngIf="reactiveform.controls['confirmpassword'].hasError('minlength')">Enter minLength 2
+                    letter</span>
+                <span *ngIf="reactiveform.controls['confirmpassword'].hasError('maxlength')">Enter maxLength 6
+                    letter</span>
+               
+                </div>
+                <span *ngIf="reactiveform.errors?.['notmatch'] && reactiveform.get('confirmpassword').touched">Password not match</span>
+
+        </div>
+        <div class="col-6 mx-auto mt-3">
+            <button>Submit</button>
+        </div>
+    </form>
+</div>

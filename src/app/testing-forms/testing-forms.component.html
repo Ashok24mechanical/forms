@@ -1,0 +1,45 @@
+<form action="" method="get" (ngSubmit)="getdata(datas)" #datas="ngForm">
+    <div class="container">
+        <div ngModelGroup="name">
+            <div>
+                <input type="text" name="fname" id="fname" placeholder="firstname" required #finame="ngModel"
+                    [(ngModel)]="fname">
+                <br>
+                <small *ngIf="finame.invalid && finame.touched">name is required</small>
+            </div>
+            <div>
+                <input type="text" name="sname" id="sname" placeholder="lastname" required ngModel minlength="6"
+                    maxlength="10" #lname="ngModel"><br>
+                <small *ngIf="lname.invalid && lname.touched">need</small>
+
+            </div>
+        </div>
+        <div>
+            <input type="password" name="password" id="password" required placeholder="password" ngModel>
+        </div>
+        <div>
+            <input type="email" name="email" id="email" email required placeholder="email" ngModel>
+        </div>
+        <div ngModelGroup="Contactdetails">
+            <div class="d-flex p-3">
+                <label for="gender" >Gender:</label>
+                <div *ngFor="let gen of gender" class="ms-3 form-check">
+                    <input type="radio" class="form-check-input" name="gender" id="{{gen.id}}" value="{{gen.value}}" [ngModel]="de">
+                    <label for="" class="form-check-label">{{gen.value}}</label>
+                </div>
+            </div>
+            <div>
+                <label for="country">country</label>
+              <select name="country" id="country" class="form-control" [ngModel]="ah">
+                <option value="india" >india</option>
+                <option value="russia">russia</option>
+                <option value="usa">usa</option>
+                <option value="uae">uae</option>
+
+              </select>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">reset</button>
+    </div>
+</form>

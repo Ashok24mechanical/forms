@@ -1,0 +1,18 @@
+<div class="container">
+    <form action="" (ngSubmit)="sub(myform)" #myform="ngForm">
+ 
+        <input type="text" name="fname" class="form-control" id="fname" placeholder="firstname" [(ngModel)]="firstname" required/><br>
+        <input type="text" name="sname" class="form-control" id="sname" placeholder="secondname" required ngModel/><br>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Email" #email="ngModel" email required ngModel/>
+        <span *ngIf="email.touched && email.invalid ">Email requred</span>
+        <br>
+        <input type="password" name="password" class="form-control" id="password" placeholder="password" required ngModel/><br>
+        <input type="submit" class="btn btn-primary" value="Submit" [disabled]="!myform.valid"/>
+
+</form>
+<div *ngIf="firstname">
+    {{firstname}}
+</div>
+
+
+</div>

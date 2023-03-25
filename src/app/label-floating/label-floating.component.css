@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   gap: 5vw;
+   background: #000;
+}
+
+.fir{
+    position: relative;
+    width: 18vw;
+}
+
+.fir input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgb(236, 231, 241);
+    background: rgb(189, 9, 244);
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-size: 1em;
+    transition: 0.6s;
+}
+.fir span{
+    color: white;
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    text-transform: capitalize;
+    transition: 0.6s;
+}
+.fir input:valid ~ span,
+.fir input:focus ~ span
+{
+    color: black;
+    transform: translateX(15px) translateY(-10px);
+    transition: 0.3s;
+    font-size: 0.6em;
+    padding: 0 10px;
+    background: white;
+    border: 1px solid silver;
+    border-radius: 20px;
+}
+.fir input:valid ~ span,
+.fir input:focus{
+    border: 2px solid rgb(20, 129, 198);
+}

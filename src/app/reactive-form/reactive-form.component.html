@@ -1,0 +1,26 @@
+<div class="container col-6">
+    <form [formGroup]="rh" (ngSubmit)="sub()">
+        <input type="text" placeholder="firstname" name="firstname" class="form-control" formControlName="firstname">
+        <!-- <small *ngIf="rh.get('firstname').invalid && rh.get('firstname').touched">name required</small> -->
+       <div *ngIf="rh.get('firstname').invalid && rh.get('firstname').touched">
+        <small *ngIf="rh.get('firstname').errors?.['required'] ">equired</small>
+        <small *ngIf="rh.get('firstname').errors?.['sp']">NO space</small>
+       </div>
+        <input type="text" class="form-control" placeholder="lostname" name="lostname" formControlName="lostname">
+        <input type="email" class="form-control" placeholder="email" name="email" formControlName="email">
+        <div formGroupName="con">
+            <input type="text" class="form-control" placeholder="city" name="city" formControlName="city"> 
+            <small *ngIf="rh.get('con.city').touched && rh.get('con.city').invalid">city required</small>
+            <input type="text" class="form-control" placeholder="state" name="state" formControlName="state">
+        </div>
+        <div formArrayName="skills">
+           <ng-container *ngFor="let ski of rh.get('skills')['controls']; let i = index">
+            <input type="text" class="form-control" placeholder="skill" name="skill" formControlName="skill"> 
+           </ng-container>
+           <button class="btn btn-dark" (click)="add()">add skills</button>
+           <button class="btn btn-primary" (click)="remove()">Remove skills</button>
+           
+        </div>
+    <button type="submit" class="btn btn-success">Submit</button>    
+    </form>
+</div>

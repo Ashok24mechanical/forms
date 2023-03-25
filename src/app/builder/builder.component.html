@@ -1,0 +1,55 @@
+<form [formGroup]="form" (ngSubmit)="sub()">
+    <div>
+        <input type="text" formControlName="username" placeholder="username">
+        <div *ngIf="this.form.get('username').invalid && form.get('username').touched">
+            <span *ngIf="form.get('username').errors?.['required']">Username is Required</span>
+            <span *ngIf="form.get('username').errors?.['pattern']">Username is pattern</span>
+            <span *ngIf="form.get('username').hasError('minlength')">Minimum 2 Letters is Reqiured</span>
+            <span *ngIf="form.get('username').hasError('maxlength')">maximum 20 Letters is Allowable</span>
+        </div>
+    </div>
+    <div>
+        <input type="email" formControlName="email" placeholder="email">
+        <div *ngIf="this.form.get('email').invalid && form.get('email').touched">
+            <span *ngIf="form.get('email').errors?.['required']">Email is Required</span>
+            <span *ngIf="form.get('email').hasError('email')">Please Enter a Valid Email</span>
+        </div>
+    </div>
+    <div>
+        <input type="password" formControlName="password" placeholder="password">
+        <div *ngIf="this.form.get('password').invalid && form.get('password').touched">
+            <span *ngIf="form.get('password').errors?.['required']">password is Required</span>
+            <span *ngIf="form.get('password').errors?.['pattern']">password is pattern</span>
+            <span *ngIf="form.get('password').hasError('minlength')">Minimum 8 Letters is Reqiured</span>
+            <span *ngIf="form.get('password').hasError('maxlength')">maximum 16 Letters is Allowable</span>
+        </div>
+    </div>
+    <div>
+        <input type="password" formControlName="confirmpassword" placeholder="confirmpassword">
+        <div *ngIf="this.form.get('confirmpassword').invalid && form.get('confirmpassword').touched">
+            <span *ngIf="form.get('confirmpassword').errors?.['required']">confirmpassword is Required</span>
+            <span *ngIf="form.get('confirmpassword').hasError('minlength')">Minimum 8 Letters is Reqiured</span>
+            <span *ngIf="form.get('confirmpassword').hasError('maxlength')">maximum 20 Letters is Allowable</span>
+        </div>
+        <div *ngIf="form.hasError('notmatch') && form.get('confirmpassword').touched">password Not Macth</div>
+    </div>
+    <div formArrayName="skills">
+        <button type="button" (click)="addskill()">+ Add</button>
+        <ng-container *ngFor="let skill of form.get('skills')['controls'] ; index as i">
+            <div formGroupName="{{i}}">
+                <div>
+                    <input type="text" formControlName="IT_skills"
+                    placeholder="IT_skills">
+                </div>
+                <div>
+                    <input type="text" formControlName="Interest" placeholder="Interest">
+                </div>
+            </div>
+            
+            <button type="button" (click)="remove(i)"><b>X</b></button>
+        </ng-container>
+       
+
+    </div>
+    <button type="submit">Submit</button>
+</form>
